@@ -102,12 +102,12 @@ filterButtons.forEach((button) => {
 
 setActiveFilter("all");
 
-ScrollReveal().reveal(".project-card", {
-  ...scrollRevealOption,
-  interval: 100,
-  distance: "30px",
-  origin: "bottom",
-});
+// ScrollReveal().reveal(".project-card", {
+//   ...scrollRevealOption,
+//   interval: 100,
+//   distance: "30px",
+//   origin: "bottom",
+// });
 
 ScrollReveal().reveal(".banner__content .section__header", {
   ...scrollRevealOption,
