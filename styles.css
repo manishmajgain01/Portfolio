@@ -60,10 +60,10 @@ a.btn {
   background-color: transparent;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
 }
-
 img {
-  display: flex;
-  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 a {
@@ -100,10 +100,10 @@ nav {
   background-color: var(--primary-color);
 }
 
-.nav__logo a {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--white);
+.nav__logo img {
+  height: 50px;
+  width: auto;
+  display: block;
 }
 
 .nav__menu__btn {
@@ -153,9 +153,8 @@ header {
 }
 
 .header__image img {
-  max-width: 475px;
-  margin-inline: auto;
-  margin-top: 2rem;
+  max-width: 500px;
+  width: 100%;
 }
 
 .header__content h2 {
@@ -684,14 +683,75 @@ header {
   padding: 2rem;
   box-shadow: 0 30px 80px rgba(16, 24, 40, 0.08);
 }
-
-.project-overview h3 {
-  margin-bottom: 1.25rem;
+.project-overview {
+  background: var(--white);
+  border-radius: 30px;
+  padding: 2rem;
+  box-shadow: 0 30px 80px rgba(16, 24, 40, 0.08);
 }
 
-.project-overview p {
-  line-height: 1.8rem;
+/* 👇 ADD NEW OVERVIEW LAYOUT HERE */
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.overview-left h3 {
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+.overview-left p {
+  line-height: 1.8;
   color: var(--text-light);
+}
+
+.overview-left h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.overview-left ul {
+  padding-left: 18px;
+}
+
+.overview-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+/* ADD BELOW THIS */
+
+.project-sites {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-site-card {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
+  transition: 0.3s ease;
+}
+
+.project-site-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-site-card h3 {
+  margin-bottom: 1rem;
+  color: var(--secondary-color);
+}
+
+.project-site-card p {
+  margin-bottom: 1.51rem;
+  color: var(--text-light);
+  line-height: 1.8rem;
 }
 
 .project-gallery {
@@ -705,6 +765,14 @@ header {
   border-radius: 22px;
   object-fit: cover;
   min-height: 200px;
+}
+.uiux-project .project-gallery img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .back-link {
@@ -1144,5 +1212,150 @@ header {
   .contact__content {
     grid-template-columns: 1fr 1.2fr;
     align-items: start;
+  }
+}
+@media (max-width: 768px) {
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-right {
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+}
+/* Mobile Responsive Fix */
+/* Hero section */
+
+@media (max-width: 768px) {
+
+  .header__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: 120px;
+  }
+
+  .header__image {
+    order: 0;
+  }
+
+  .header__image img {
+    max-width: 250px;
+    margin: auto;
+  }
+
+  .header__content h1 {
+    font-size: 2.2rem;
+    line-height: 3rem;
+  }
+
+  .header__content h2 {
+    font-size: 1.1rem;
+  }
+
+  .header__content h3 {
+    font-size: 1rem;
+  }
+
+  .header__content p {
+    font-size: 0.95rem;
+  }
+
+  .header__btns {
+    flex-direction: column;
+  }
+}
+/* about me section */
+@media (max-width: 768px) {
+  .intro__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .intro__image {
+    max-width: 250px;
+    margin: auto;
+    padding: 0;
+  }
+
+  .intro__content :is(.section__subheader, .section__header) {
+    text-align: center;
+  }
+}
+/* navbar logo and menu */
+@media (max-width: 768px) {
+
+  .nav__header {
+    background-color: white;
+  }
+
+  .nav__logo img {
+    height: 40px;
+  }
+
+  .nav__menu__btn {
+    display: block;
+    color: #0c0a5d;
+    font-size: 2rem;
+  }
+}
+/* ... (Your existing contact form and mobile media queries) ... */
+@media (max-max-width: 768px) {
+  .nav__menu__btn {
+    display: block;
+    color: #0c0a5d;
+    font-size: 2rem;
+  }
+}
+
+/* ==========================================================================
+   UI/UX Case Study Page - Custom Layout Fixes
+   ========================================================================== */
+
+/* 1. Force the main gallery container to stack elements vertically */
+.uiux-project .project-gallery {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 30px !important; /* Space between the landscape mock.png and the row below */
+  width: 100%;
+}
+
+/* 2. Style the main 'mock.png' image to be completely full width landscape */
+.uiux-project .project-gallery > img.project-img {
+  width: 50% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 22px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin: 0 auto !important; /* Centers the main mock.png image horizontally */
+}
+
+/* 3. Handle the mobile screens container wrapper row layout */
+.uiux-project .uiux-project-screens {
+  display: flex !important;
+  flex-wrap: wrap; /* Allows wrapping on small mobile screen views naturally */
+  justify-content: center; /* Centers the phone list rows horizontally */
+  gap: 10px !important; /* THE GAP FIX: Lower or raise this value to control closeness */
+  width: 100%;
+}
+
+/* 4. Ensure individual mobile mockups are sized evenly and sharply */
+.uiux-project .uiux-project-screens img.project-img {
+  flex: 1 1 calc(25% - 10px); /* Tries to fit 4 per row on desktop displays */
+  min-width: 140px; /* Prevents phones from getting squished too small on mobile views */
+  max-width: 240px; /* Keeps them looking crisp and clean on huge desktop screens */
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 20px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+  object-fit: cover;
+}
+/* Mobile Responsive Fix for the mockup photo - Center Crop */
+@media (max-width: 768px) {
+  .uiux-project .project-gallery > img.project-img {
+    height: 220px !important; /* Sets a fixed height so it looks like a banner */
+    object-fit: cover !important; /* Crops the image smartly */
+    object-position: center !important; /* Centers the crop on the main app designs */
+    width: 100% !important;
   }
 }
